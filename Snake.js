@@ -5,6 +5,7 @@ class Snake {
 		this.posX = posX;
 		this.posY = posY;
 		this.position = new Array(17)
+		this.perdu = false;
 	}
 
 	moveDirection(dirrection) {
@@ -18,7 +19,8 @@ class Snake {
 
 				if (this.posY < 0) {
 					this.posY++;
-					console.log('Perdu à gauche');
+
+					this.perdu = true;
 				}
 				break;
 
@@ -27,7 +29,8 @@ class Snake {
 				this.posX--;
 				if (this.posX < 0) {
 					this.posX++;
-					console.log('Perdu en haut')
+
+					this.perdu = true;
 				}
 				break;
 
@@ -37,7 +40,8 @@ class Snake {
 
 				if (this.posY > this.position.length - 1) {
 					this.posY--;
-					console.log('Perdu à droite')
+
+					this.perdu = true;
 				}
 				break;
 
@@ -46,16 +50,17 @@ class Snake {
 				this.posX++;
 				if (this.posX > this.position.length - 1) {
 					this.posX--;
-					console.log('Perdu en bas')
+
+					this.perdu = true;
 				}
 				break;
 		}
 		this.updateSnakePosition();
+		this.testLose(this.perdu);
 	}
 
 	updateSnakePosition() {
 		this.getPosition();
-
 		this.position[this.posX][this.posY].classList.add('currentSnakePos');
 	}
 
@@ -71,6 +76,19 @@ class Snake {
 				this.position[x][y] = getPosition[count];
 				count++;			
 			}
+		}
+	}
+
+	testLose() {
+		if (this.perdu) {
+			alert('Vous avez perdu !');
+
+			this.position[this.posX][this.posY].classList.remove('currentSnakePos');
+			this.posX = 8;
+			this.posY = 8;
+			this.position[this.posX][this.posY].classList.add('currentSnakePos');
+
+			this.perdu = false;
 		}
 	}
 }

@@ -10,7 +10,7 @@
 }
 
 body {
-	background-color: #717171;
+	background-color: rgba(0, 0, 0, 0.9);
 }
 
 /* LE CANVAS */
@@ -19,9 +19,10 @@ body {
 	height: var(--canvasSnakeSize);
 	margin-left: calc(100vw / 2 - var(--canvasSnakeSize) / 2);
 	margin-top: calc(100vh / 2 - var(--canvasSnakeSize) / 2);
-	background-color: #ccc;
+	background-color: #b5b5b5;
 	display: flex;
 	flex-wrap: wrap;
+	outline: 2px solid #5c6f68;
 }
 
 
@@ -37,5 +38,5 @@ body {
 }
 
 .currentSnakePos {
-	background-color: goldenrod;
+	background-color: #8d6c45;
 }
