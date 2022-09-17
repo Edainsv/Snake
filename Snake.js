@@ -15,21 +15,39 @@ class Snake {
 			case 37: // Gauche
 				this.currentDirrection = 'left';
 				this.posY--;
+
+				if (this.posY < 0) {
+					this.posY++;
+					console.log('Perdu à gauche');
+				}
 				break;
 
 			case 38: // Haut
 				this.currentDirrection = 'top';
 				this.posX--;
+				if (this.posX < 0) {
+					this.posX++;
+					console.log('Perdu en haut')
+				}
 				break;
 
 			case 39: // Droite
 				this.currentDirrection = 'right';
 				this.posY++;
+
+				if (this.posY > this.position.length - 1) {
+					this.posY--;
+					console.log('Perdu à droite')
+				}
 				break;
 
 			case 40: // Bas
 				this.currentDirrection = 'down';
 				this.posX++;
+				if (this.posX > this.position.length - 1) {
+					this.posX--;
+					console.log('Perdu en bas')
+				}
 				break;
 		}
 		this.updateSnakePosition();

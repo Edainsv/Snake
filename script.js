@@ -21,6 +21,7 @@ window.onload = function() {
 
 	var snake = new Snake(8, 8);
 
+
 }
 
 
