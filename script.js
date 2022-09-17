@@ -1,13 +1,8 @@
 window.onload = function() {
 	var canvas = document.getElementById('canvas');
 	var position = new Array(17); // Créer un tableau pour gérer les coordonnées
+	var snake = [];
 
-	// Récupère l'appuie d'une touche
-	document.onkeydown = function(btnPress) {
-		snake.moveDirection(btnPress.keyCode);
-	}
-
-	// Attribution des "pixels" dans le canvas
 	for (var x = 0; x < position.length; x++) {
 		position[x] = new Array();
 
@@ -17,10 +12,25 @@ window.onload = function() {
 			canvas.appendChild(position[x][y]);
 		}
 	}
-	position[8][8].classList.add('currentSnakePos');
+	
+	// Création du snake par défaut au lancement du jeu
+	snake[0] = new Snake(8, 8);
+	snake[1] = new Snake(8, 7);
+	snake[2] = new Snake(8, 6);
+	
+	// Pour afficher update dirrectement l'affichage du snake
+	updateSnake(snake);
 
-	var snake = new Snake(8, 8);
-
+	// Récupère l'appuie d'une touche
+	document.onkeydown = function(btnPress) {
+		snake[0].moveDirection(btnPress.keyCode);
+	}
+	
+	function updateSnake(snake) {
+		for(var i = 0; i < snake.length; i++) {
+			snake[i].updateSnakePosition();
+		}
+	}
 }
 
 

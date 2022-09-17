@@ -1,7 +1,7 @@
 // Classe Snake
 class Snake {
 	constructor(posX, posY) {
-		this.currentDirrection = 0;
+		this.currentDirrection = 'right';
 		this.posX = posX;
 		this.posY = posY;
 		this.position = new Array(17)
@@ -14,44 +14,58 @@ class Snake {
 
 		switch (dirrection) {
 			case 37: // Gauche
-				this.currentDirrection = 'left';
-				this.posY--;
+				if (this.currentDirrection != 'right')
+				{
+					this.currentDirrection = 'left';
+					this.posY--;
 
-				if (this.posY < 0) {
-					this.posY++;
+					if (this.posY < 0) {
+						this.posY++;
 
-					this.perdu = true;
+						this.perdu = true;
+					}
 				}
 				break;
 
 			case 38: // Haut
-				this.currentDirrection = 'top';
-				this.posX--;
-				if (this.posX < 0) {
-					this.posX++;
+				if(this.currentDirrection != 'down')
+				{
+					this.currentDirrection = 'top';
+					this.posX--;
 
-					this.perdu = true;
+					if (this.posX < 0) {
+						this.posX++;
+
+						this.perdu = true;
+					}
 				}
 				break;
 
 			case 39: // Droite
-				this.currentDirrection = 'right';
-				this.posY++;
+				if (this.currentDirrection != 'left')
+				{
+					this.currentDirrection = 'right';
+					this.posY++;
 
-				if (this.posY > this.position.length - 1) {
-					this.posY--;
+					if (this.posY > this.position.length - 1) {
+						this.posY--;
 
-					this.perdu = true;
+						this.perdu = true;
+					}
 				}
 				break;
 
 			case 40: // Bas
-				this.currentDirrection = 'down';
-				this.posX++;
-				if (this.posX > this.position.length - 1) {
-					this.posX--;
+				if (this.currentDirrection != 'top')
+				{
+					this.currentDirrection = 'down';
+					this.posX++;
 
-					this.perdu = true;
+					if (this.posX > this.position.length - 1) {
+						this.posX--;
+
+						this.perdu = true;
+					}
 				}
 				break;
 		}
